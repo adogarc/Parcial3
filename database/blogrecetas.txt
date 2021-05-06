@@ -1,0 +1,32 @@
+Create database IF NOT EXISTS BlogRecetas;
+use BlogRecetas;
+
+create table Usuarios
+(
+IdUsuario	int(255),
+nombrePersona	varchar(255),
+Email	varchar(255),
+usuairo varchar(255),
+contraseña varchar(255),
+Constraint pk_usuario primary key(usuairo)
+)ENGINE=Innodb;
+Insert Into Usuarios VALUES('1','Adonay','adonay@udb.com','adonaygarcia1','admin123');
+Insert Into Usuarios VALUES('2','pedro','pedro@udb.com','pedrorodriguez2','usu1234');
+Insert Into Usuarios VALUES('3','edgar','edgar@udb.com','edgarmil2','usu1234');
+
+Create table Recetas
+(
+IdReceta int (255) ,
+usuairo varchar(255),
+NombreReceta varchar(255),
+Tipo		varchar(50),
+Ingredientes	varchar(150),
+Preparacion		varchar(255),
+imagen			varchar(255),
+Constraint pk_idReceta primary key(IdReceta),
+CONSTRAINT fk_idusuario FOREIGN KEY(usuairo) REFERENCES Usuarios(usuairo)
+)ENGINE=Innodb;
+
+Insert Into Recetas VALUES ('1','adonaygarcia1','pupusas','platillo tipico','harina de arroz, frijoles, queso, aceite','tomar un poco de masa de arroz y hacer un circulo, palmer hasta quedar plana luego agregar frijoles y queso al gusto para finalmente ponerla en una plancha caliente hasta que se cosa la masa de arroz');
+Insert Into Recetas VALUES ('2','pedrorodriguez2','tamales','platillo tipico','harina de maiz, tomates, pollo,papa, hojas de banano','Tomar una hoja de babano agregar un poco de masa de maiz y colocar un poco de salsa, pollo y papa al gusto y cubrir esto con más masa de maiz y envolverlo con la hoja de banano y cocerlos en una holla a baño maria');
+Insert Into Recetas VALUES ('3','edgarmil2','yuka frita','platillo tipico','yuka,repollo,pepesca,tomate,pepino','Salcochar la yuka en una holla alrededor de 30 min, luego freirla y elaborar un curtido con el repollo para luego de freir la yuka colocarlo sobre esta junto a la salsa,pepescas y pepino');
